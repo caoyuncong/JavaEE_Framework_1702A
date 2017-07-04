@@ -23,5 +23,12 @@ public class JdbcTest {
         String sql = "INSERT INTO db_test.user VALUE(NULL, ?, ?)";
 
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, username);
+        preparedStatement.setString(2, password);
+
+        preparedStatement.executeUpdate();
+
+        preparedStatement.close();
+        connection.close();
     }
 }
