@@ -17,6 +17,11 @@
     </delete>
     <select id="queryAll" resultType="demo.model.User">
         SELECT *
-        FROM db_test.user;
+        FROM db_test.user
+    </select>
+    <select id="queryById" parameterType="int" resultType="demo.model.User">
+        SELECT *
+        FROM db_test.user
+        WHERE id = #{id};
     </select>
 </mapper>
