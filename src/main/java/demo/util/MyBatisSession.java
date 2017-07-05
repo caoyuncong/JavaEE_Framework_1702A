@@ -12,7 +12,7 @@ import java.io.IOException;
  * 7/4/17 17:29
  * https://github.com/thu/JavaEE_Framework_1702A/
  */
-public class MyBatisSession { // singleton class 单例模式
+public class MyBatisSession { // singleton class 单例模式 单一的一个实例
 
     private static SqlSessionFactory sqlSessionFactory;
 

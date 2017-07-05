@@ -14,19 +14,19 @@ public class UserService {
 
     private static int createUserViaXml() { // via 通过\ [ˈvaɪə，ˈviːə]
         try (SqlSession sqlSession = MyBatisSession.getSqlSession(true)) {
-            return sqlSession.insert("demo.mapper.UserMapper.create", new User(null, "Jerry1", "123"));
+            return sqlSession.insert("user.create", 1);
         }
     }
 
     private static int createUser() {
         try (SqlSession sqlSession = MyBatisSession.getSqlSession(true)) {
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-            return userMapper.create(new User(null, "Jerry2", "123"));
+            return userMapper.create(new User("Jerry2", "123"));
         }
     }
 
     public static void main(String[] args) {
-//        System.out.println(createUserViaXml());
-        System.out.println(createUser());
+        System.out.println(createUserViaXml());
+//        System.out.println(createUser());
     }
 }

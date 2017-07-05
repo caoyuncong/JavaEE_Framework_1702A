@@ -19,4 +19,5 @@ dependencies {
     compile 'com.github.penggle:kaptcha:2.3.2'
     compile 'org.json:json:20170516'
     compile 'org.mybatis:mybatis:3.4.4'
+    compile 'redis.clients:jedis:2.9.0'
 }

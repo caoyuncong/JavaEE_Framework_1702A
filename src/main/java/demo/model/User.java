@@ -15,6 +15,11 @@ public class User implements Serializable {
     public User() {
     }
 
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public User(Integer id, String username, String password) {
 
         this.id = id;
@@ -32,6 +37,7 @@ public class User implements Serializable {
     }
 
     public String getUsername() {
+        System.out.println("getUsername...");
         return username;
     }
 

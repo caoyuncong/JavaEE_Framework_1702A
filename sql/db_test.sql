@@ -11,3 +11,5 @@ CREATE TABLE db_test.user (
 
 SELECT *
 FROM db_test.user;
+
+TRUNCATE TABLE db_test.user;
