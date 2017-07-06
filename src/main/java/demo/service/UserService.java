@@ -1,10 +1,7 @@
 package demo.service;
 
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
-import demo.mapper.UserMapper;
 import demo.model.User;
 import demo.util.MyBatisSession;
-import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
@@ -39,13 +36,21 @@ public class UserService {
             return sqlSession.selectList("user.queryAll");
         }
     }
-/*
+
+    private static User queryById() {
+        try (SqlSession sqlSession = MyBatisSession.getSqlSession(false)) {
+            return sqlSession.selectOne("user.queryById", 5);
+        }
+    }
+
+    /*
     private static int createUser() {
         try (SqlSession sqlSession = MyBatisSession.getSqlSession(true)) {
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             return userMapper.create(new User("Jerry2", "123"));
         }
-    }*/
+    }
+    */
 
     public static void main(String[] args) {
 //        System.out.println(createUserViaXml());
@@ -53,9 +58,11 @@ public class UserService {
 //        System.out.println(updateUser());
 //        System.out.println(deleteUser());
 
-        List<User> users = queryAll();
-        for (User user : users) {
-            System.out.println(user);
-        }
+//        List<User> users = queryAll();
+//        for (User user : users) {
+//            System.out.println(user);
+//        }
+
+        System.out.println(queryById());
     }
 }
