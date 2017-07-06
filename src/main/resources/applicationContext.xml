@@ -8,6 +8,11 @@
 
     <bean id="business" class="demo.c.Business">
         <!--<property name="deviceWriter" ref="floppyWriter"/>-->
-        <constructor-arg name="deviceWriter" ref="test"/>
+        <constructor-arg name="deviceWriter" ref="floppyWriter"/>
+    </bean>
+
+    <bean id="hello" class="demo.d.Hello">
+        <!--<property name="name" value="Tom"/>-->
+        <property name="name" ref=""/>
     </bean>
 </beans>
