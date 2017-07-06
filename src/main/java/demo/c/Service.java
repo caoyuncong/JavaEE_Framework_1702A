@@ -7,6 +7,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * Created by mingfei.net@gmail.com
  * 7/6/17 09:58
  * https://github.com/thu/JavaEE_Framework_1702A/
+ * IoC / DI
+ * IoC = Inversion of Control 控制反转 反演\ [ɪn'vɜːʃ\(ə\)n]
  */
 public class Service {
     public static void main(String[] args) {
