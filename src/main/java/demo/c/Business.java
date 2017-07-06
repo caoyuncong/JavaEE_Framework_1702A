@@ -1,4 +1,4 @@
-package demo.b;
+package demo.c;
 
 /**
  * Created by mingfei.net@gmail.com
@@ -11,7 +11,11 @@ public class Business {
 
     private DeviceWriter deviceWriter;
 
-    public Business(DeviceWriter deviceWriter) {
+//    public Business(DeviceWriter deviceWriter) {
+//        this.deviceWriter = deviceWriter;
+//    }
+
+    public void setDeviceWriter(DeviceWriter deviceWriter) {
         this.deviceWriter = deviceWriter;
     }
 
