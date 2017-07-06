@@ -7,6 +7,6 @@
     <bean id="usbWriter" class="demo.c.UsbWriter"/>
 
     <bean id="business" class="demo.c.Business">
-        <property name="deviceWriter" ref="floppyWriter"/>
+        <property name="deviceWriter" ref="usbWriter"/>
     </bean>
 </beans>

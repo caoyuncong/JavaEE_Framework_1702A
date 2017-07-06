@@ -1,5 +1,8 @@
 package demo.c;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 /**
  * Created by mingfei.net@gmail.com
  * 7/6/17 09:58
@@ -7,8 +10,12 @@ package demo.c;
  */
 public class Service {
     public static void main(String[] args) {
-        Business business = new Business();
-        business.setDeviceWriter(new UsbWriter());
+//        Business business = new Business();
+//        business.setDeviceWriter(new UsbWriter());
+//        business.write();
+
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Business business = (Business) applicationContext.getBean("business");
         business.write();
     }
 }
