@@ -12,29 +12,29 @@ import java.util.List;
  */
 public class UserService {
 
-    private InterfaceTest interfaceTest;
+    private UserDao userDao;
 
-    public void setInterfaceTest(InterfaceTest interfaceTest) {
-        this.interfaceTest = interfaceTest;
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
     }
 
     public int createUser(User user) {
-        return interfaceTest.createUser(user);
+        return userDao.createUser(user);
     }
 
     public  int updateUser(User user) {
-        return interfaceTest.updateUser(user);
+        return userDao.updateUser(user);
     }
 
     public  int deleteUser(int id) {
-        return interfaceTest.deleteUser(id);
+        return userDao.deleteUser(id);
     }
 
     public  List<User> queryAll() {
-        return interfaceTest.queryAll();
+        return userDao.queryAll();
     }
 
     public  User queryById(int id) {
-        return interfaceTest.queryById(id);
+        return userDao.queryById(id);
     }
 }

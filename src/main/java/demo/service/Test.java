@@ -14,7 +14,11 @@ public class Test {
         ApplicationContext beans = new ClassPathXmlApplicationContext("test/beans.xml");
         UserService userService = (UserService) beans.getBean("userService");
 
-        User user = new User("new user", "new password");
-        userService.createUser(user);
+//        User user = new User("new user", "new password");
+//        userService.createUser(user);
+
+        for (User user : userService.queryAll()) {
+            System.out.println(user.getUsername());
+        }
     }
 }

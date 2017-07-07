@@ -8,7 +8,7 @@
     <!--<bean id="hibernate" class="demo.service.Hibernate"/>-->
 
     <bean id="userService" class="demo.service.UserService">
-        <!--<property name="interfaceTest" ref="myBatis"/>-->
-        <property name="interfaceTest" ref="jdbc"/>
+        <!--<property name="userDao" ref="myBatis"/>-->
+        <property name="userDao" ref="jdbc"/>
     </bean>
 </beans>

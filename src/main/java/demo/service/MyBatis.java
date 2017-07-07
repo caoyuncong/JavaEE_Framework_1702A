@@ -11,7 +11,7 @@ import java.util.List;
  * 7/7/17 10:22
  * https://github.com/thu/JavaEE_Framework_1702A/
  */
-public class MyBatis implements InterfaceTest {
+public class MyBatis implements UserDao {
 
     @Override
     public int createUser(User user) {
