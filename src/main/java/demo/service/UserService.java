@@ -1,8 +1,6 @@
 package demo.service;
 
 import demo.model.User;
-import demo.util.MyBatisSession;
-import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
 
@@ -10,59 +8,40 @@ import java.util.List;
  * Created by mingfei.net@gmail.com
  * 7/4/17 17:37
  * https://github.com/thu/JavaEE_Framework_1702A/
+ * UserService 和 MyBatis 是强耦合
  */
 public class UserService {
 
-    private static int createUserViaXml() { // via 通过\ [ˈvaɪə，ˈviːə]
-        try (SqlSession sqlSession = MyBatisSession.getSqlSession(true)) {
-            return sqlSession.insert("user.create", new User("Tom", "123"));
-        }
+    private InterfaceTest interfaceTest;
+
+    private int createUser() { // via 通过\ [ˈvaɪə，ˈviːə]
+        return interfaceTest.createUser();
     }
 
-    private static int updateUser() {
-        try (SqlSession sqlSession = MyBatisSession.getSqlSession(true)) {
-            return sqlSession.update("user.update", new User(1, "tester", "test"));
-        }
+    private  int updateUser() {
+        return interfaceTest.updateUser();
     }
 
-    private static int deleteUser() {
-        try (SqlSession sqlSession = MyBatisSession.getSqlSession(true)) {
-            return sqlSession.delete("user.delete");
-        }
+    private  int deleteUser() {
+        return interfaceTest.deleteUser();
     }
 
-    private static List<User> queryAll() {
-        try (SqlSession sqlSession = MyBatisSession.getSqlSession(false)) {
-            return sqlSession.selectList("user.queryAll");
-        }
+    private  List<User> queryAll() {
+        return interfaceTest.queryAll();
     }
 
-    private static User queryById() {
-        try (SqlSession sqlSession = MyBatisSession.getSqlSession(false)) {
-            return sqlSession.selectOne("user.queryById", 5);
-        }
+    private  User queryById() {
+        return interfaceTest.queryById();
     }
 
-    /*
-    private static int createUser() {
-        try (SqlSession sqlSession = MyBatisSession.getSqlSession(true)) {
-            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
-            return userMapper.create(new User("Jerry2", "123"));
-        }
-    }
-    */
-
-    public static void main(String[] args) {
-//        System.out.println(createUserViaXml());
+    public  void main(String[] args) {
 //        System.out.println(createUser());
 //        System.out.println(updateUser());
 //        System.out.println(deleteUser());
-
 //        List<User> users = queryAll();
 //        for (User user : users) {
 //            System.out.println(user);
 //        }
-
-        System.out.println(queryById());
+//        System.out.println(queryById());
     }
 }
