@@ -8,40 +8,33 @@ import java.util.List;
  * Created by mingfei.net@gmail.com
  * 7/4/17 17:37
  * https://github.com/thu/JavaEE_Framework_1702A/
- * UserService 和 MyBatis 是强耦合
+ * UserService 和 MyBatis / JDBC 是松散耦合
  */
 public class UserService {
 
     private InterfaceTest interfaceTest;
 
-    private int createUser() { // via 通过\ [ˈvaɪə，ˈviːə]
-        return interfaceTest.createUser();
+    public void setInterfaceTest(InterfaceTest interfaceTest) {
+        this.interfaceTest = interfaceTest;
     }
 
-    private  int updateUser() {
-        return interfaceTest.updateUser();
+    public int createUser(User user) {
+        return interfaceTest.createUser(user);
     }
 
-    private  int deleteUser() {
-        return interfaceTest.deleteUser();
+    public  int updateUser(User user) {
+        return interfaceTest.updateUser(user);
     }
 
-    private  List<User> queryAll() {
+    public  int deleteUser(int id) {
+        return interfaceTest.deleteUser(id);
+    }
+
+    public  List<User> queryAll() {
         return interfaceTest.queryAll();
     }
 
-    private  User queryById() {
-        return interfaceTest.queryById();
-    }
-
-    public  void main(String[] args) {
-//        System.out.println(createUser());
-//        System.out.println(updateUser());
-//        System.out.println(deleteUser());
-//        List<User> users = queryAll();
-//        for (User user : users) {
-//            System.out.println(user);
-//        }
-//        System.out.println(queryById());
+    public  User queryById(int id) {
+        return interfaceTest.queryById(id);
     }
 }
