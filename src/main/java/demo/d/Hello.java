@@ -6,13 +6,14 @@ package demo.d;
  * https://github.com/thu/JavaEE_Framework_1702A/
  */
 public class Hello {
-    private String name;
 
-    public void setName(String name) {
+    private CharSequence name; // CharSequence
+
+    public void setName(CharSequence name) {
         this.name = name;
     }
 
     public void sayHello() {
-        System.out.println("Hello, " + name);
+        System.out.println("Hello, " + name + "!");
     }
 }

@@ -11,8 +11,16 @@
         <constructor-arg name="deviceWriter" ref="floppyWriter"/>
     </bean>
 
+    <bean id="string" class="java.lang.String">
+        <constructor-arg value="Tom"/>
+    </bean>
+    <bean id="stringBuffer" class="java.lang.StringBuffer">
+        <constructor-arg value="Jerry"/>
+    </bean>
+
     <bean id="hello" class="demo.d.Hello">
         <!--<property name="name" value="Tom"/>-->
-        <property name="name" ref=""/>
+        <!--<property name="name" ref="string"/>-->
+        <property name="name" ref="stringBuffer"/>
     </bean>
 </beans>
