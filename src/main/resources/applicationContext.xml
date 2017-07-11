@@ -2,25 +2,5 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <!--bean 豆-->
-    <bean id="floppyWriter" class="demo.c.FloppyWriter"/>
-    <bean id="usbWriter" class="demo.c.UsbWriter"/>
 
-    <bean id="business" class="demo.c.Business">
-        <!--<property name="deviceWriter" ref="floppyWriter"/>-->
-        <constructor-arg name="deviceWriter" ref="floppyWriter"/>
-    </bean>
-
-    <bean id="string" class="java.lang.String">
-        <constructor-arg value="Tom"/>
-    </bean>
-    <bean id="stringBuffer" class="java.lang.StringBuffer">
-        <constructor-arg value="Jerry"/>
-    </bean>
-
-    <bean id="hello" class="demo.d.Hello">
-        <!--<property name="name" value="Tom"/>-->
-        <!--<property name="name" ref="string"/>-->
-        <property name="name" ref="stringBuffer"/>
-    </bean>
 </beans>

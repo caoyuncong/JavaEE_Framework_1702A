@@ -4,6 +4,10 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+    <welcome-file-list>
+        <welcome-file>default.jsp</welcome-file>
+    </welcome-file-list>
+
     <servlet>
         <servlet-name>web</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -20,7 +24,7 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:test/beans.xml</param-value>
+        <param-value>classpath:applicationContext.xml</param-value>
     </context-param>
 
     <!-- CoC Convention over Configuration 约定 优于 配置-->

@@ -20,6 +20,6 @@ public class UserController {
         try (SqlSession sqlSession = MyBatisSession.getSqlSession(true)) {
             sqlSession.insert("user.create", user);
         }
-        return "redirect:/index.jsp";
+        return "redirect:/default.jsp";
     }
 }
