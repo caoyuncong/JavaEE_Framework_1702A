@@ -1,6 +1,8 @@
 package demo.controller;
 
 import demo.model.User;
+import demo.util.MyBatisSession;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,8 +17,9 @@ public class UserController {
 
     @RequestMapping("create")
     private String create(User user) {
-        // TODO: 7/10/17 save user...
-        System.out.println("create...");
+        try (SqlSession sqlSession = MyBatisSession.getSqlSession(true)) {
+            sqlSession.insert("user.create", user);
+        }
         return "redirect:/index.jsp";
     }
 }
