@@ -6,22 +6,9 @@
     <insert id="create" parameterType="user" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO db_test.user VALUE (NULL, #{username}, #{password})
     </insert>
-    <update id="update" parameterType="user">
-        UPDATE db_test.user
-        SET username = #{username}, password = #{password}
-        WHERE id = #{id}
-    </update>
-    <delete id="delete" parameterType="int">
-        DELETE FROM db_test.user
-        WHERE id = #{id}
-    </delete>
-    <select id="queryAll" resultType="user">
+    <select id="signIn" parameterType="user" resultType="user">
         SELECT *
         FROM db_test.user
-    </select>
-    <select id="queryById" parameterType="int" resultType="user">
-        SELECT *
-        FROM db_test.user
-        WHERE id = #{id};
+        WHERE username = #{username} AND password = #{password}
     </select>
 </mapper>
