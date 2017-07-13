@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
  * https://github.com/thu/JavaEE_Framework_1702A/
  */
 public class BaseController {
+
     HttpServletRequest request;
     HttpServletResponse response;
     HttpSession session;

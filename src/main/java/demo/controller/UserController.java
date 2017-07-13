@@ -2,6 +2,7 @@ package demo.controller;
 
 import demo.dao.UserDao;
 import demo.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -14,11 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("user")
 public class UserController extends BaseController {
 
+    @Autowired // 自动装配
     private UserDao userDao;
-
-    public void setUserDao(UserDao userDao) {
-        this.userDao = userDao;
-    }
 
     @RequestMapping("create")
     private String create(User user) {
