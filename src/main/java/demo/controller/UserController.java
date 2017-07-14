@@ -34,4 +34,10 @@ public class UserController extends BaseController {
         request.setAttribute("message", "用户名或密码错误");
         return "/default.jsp";
     }
+
+    @RequestMapping("signOut")
+    private String signOut() {
+        session.invalidate();
+        return "redirect:/default.jsp";
+    }
 }
