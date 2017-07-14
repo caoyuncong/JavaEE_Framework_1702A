@@ -12,5 +12,6 @@
 <h1>主页</h1>
 ${sessionScope.user.username}
 <p><a href="/user/signOut">注销</a></p>
+<hr>
 </body>
 </html>
