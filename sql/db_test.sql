@@ -36,3 +36,8 @@ FROM db_test.user;
 
 SELECT *
 FROM db_test.book;
+
+INSERT INTO 新表名
+  SELECT 字段
+  FROM 将要复制的表名;
+

@@ -2,6 +2,8 @@ package demo.dao;
 
 import demo.model.Book;
 
+import java.util.List;
+
 /**
  * Created by mingfei.net@gmail.com
  * 7/14/17 10:46
@@ -10,4 +12,13 @@ import demo.model.Book;
 public interface BookDao {
 
     void create(Book book);
+
+    List<Book> queryAll();
+
+    Book queryBookById(int id);
+
+    void modify(Book book);
+
+    void remove(int id);
+
 }
