@@ -2,6 +2,7 @@ package demo.controller;
 
 import demo.dao.UserDao;
 import demo.model.User;
+import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,14 +21,19 @@ public class UserController extends BaseController {
 
     @RequestMapping("create")
     private String create(User user) {
+        StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
+        user.setPassword(encryptor.encryptPassword(user.getPassword()));
         userDao.create(user);
         return "redirect:/default.jsp";
     }
 
     @RequestMapping("signIn")
     private String signIn(User user) {
-        user = userDao.query(user);
-        if (user != null) {
+        String plainPassword = user.getPassword();
+        user = userDao.query("queryPasswordByUsername", user.getUsername());
+        String encryptedPassword = user.getPassword();
+        StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
+        if (encryptor.checkPassword(plainPassword, encryptedPassword)) {
             session.setAttribute("user", user);
             return "redirect:/book/queryAll";
         }

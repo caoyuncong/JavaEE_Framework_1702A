@@ -11,4 +11,9 @@
         FROM db_test.user
         WHERE username = #{username} AND password = #{password}
     </select>
+    <select id="queryPasswordByUsername" parameterType="String" resultType="user">
+        SELECT *
+        FROM db_test.user
+        WHERE username = #{username}
+    </select>
 </mapper>

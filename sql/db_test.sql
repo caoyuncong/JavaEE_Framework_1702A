@@ -37,3 +37,9 @@ FROM db_test.user;
 SELECT *
 FROM db_test.book;
 
+SELECT *
+FROM db_test.user WHERE username = '' AND password = '';
+
+SELECT password
+FROM db_test.user WHERE username = '';
+
