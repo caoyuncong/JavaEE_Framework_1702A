@@ -7,9 +7,5 @@ import demo.model.User;
  * 7/11/17 11:55
  * https://github.com/thu/JavaEE_Framework_1702A/
  */
-public interface UserDao {
-
-    void create(User user);
-
-    User query(User user); // SQL select
+public interface UserDao extends GenericDao<User> {
 }
