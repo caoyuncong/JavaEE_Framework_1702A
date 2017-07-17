@@ -23,7 +23,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User signIn(User user) {
-        return sqlSession.selectOne("user.signIn", user);
+    public User query(User user) {
+        return sqlSession.selectOne("user.query", user);
     }
 }

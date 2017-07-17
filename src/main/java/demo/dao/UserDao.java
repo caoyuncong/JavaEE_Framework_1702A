@@ -11,5 +11,5 @@ public interface UserDao {
 
     void create(User user);
 
-    User signIn(User user);
+    User query(User user); // SQL select
 }
