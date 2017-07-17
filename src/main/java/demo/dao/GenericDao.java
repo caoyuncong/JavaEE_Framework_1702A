@@ -24,6 +24,4 @@ public interface GenericDao<T> { // Model Entity Domain 域
 
     void remove(int id);
 
-//    User queryPasswordByUsername(User user);
-
 }
