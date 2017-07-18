@@ -2,6 +2,7 @@ package demo.controller;
 
 import demo.dao.UserDao;
 import demo.model.User;
+import demo.service.UserService;
 import org.jasypt.util.password.StrongPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,9 @@ public class UserController extends BaseController {
 
     @Autowired // 自动装配
     private UserDao userDao;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("create")
     private String create(User user) {
