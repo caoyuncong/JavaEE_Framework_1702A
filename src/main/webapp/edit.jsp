@@ -4,13 +4,14 @@
     https://github.com/thu/JavaEE_Framework_1702A/
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ include file="inc.jsp" %>
 <html>
 <head>
     <title>edit page</title>
 </head>
 <body>
 <h1>编辑图书</h1>
-<form action="/book/modify" method="post">
+<form action="${ctx}/book/modify" method="post">
     <input type="hidden" name="id" value="${sessionScope.book.id}">
     <input type="text" name="title" placeholder="书名" value="${sessionScope.book.title}"><br>
     <input type="text" name="author" placeholder="作者" value="${sessionScope.book.author}"><br>

@@ -19,26 +19,21 @@ public class UserController extends BaseController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("create")
-    private String create(User user) {
-        StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
-        user.setPassword(encryptor.encryptPassword(user.getPassword()));
-        userService.create(user);
-        return "redirect:/default.jsp";
+    @RequestMapping("signUp")
+    private String signUp(User user) {
+        if (userService.signUp(user)) {
+            return "redirect:/default.jsp";
+        }
+        request.setAttribute("message", "用户名已经存在");
+        return "/sign_up.jsp";
     }
 
     @RequestMapping("signIn")
     private String signIn(User user) {
-        String plainPassword = user.getPassword();
-        user = userService.query("queryPasswordByUsername", user.getUsername());
+        user = userService.signIn(user);
         if (user != null) {
-            String encryptedPassword = user.getPassword();
-            StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
-            if (encryptor.checkPassword(plainPassword, encryptedPassword)) {
-                userService.modify("updateLastTime", user.getId()); // update last login time
-                session.setAttribute("user", user);
-                return "redirect:/book/queryAll";
-            }
+            session.setAttribute("user", user);
+            return "redirect:/book/queryAll";
         }
         request.setAttribute("message", "用户名或密码错误");
         return "/default.jsp";

@@ -8,4 +8,8 @@ import demo.model.User;
  * https://github.com/thu/JavaEE_Framework_1702A/
  */
 public interface UserService extends GenericService<User> {
+
+    User signIn(User user);
+
+    boolean signUp(User user);
 }
