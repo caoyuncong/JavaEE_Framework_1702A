@@ -10,7 +10,7 @@ CREATE TABLE db_test.user (
   COMMENT '用户名',
   password VARCHAR(255) NOT NULL
   COMMENT '密码',
-  lastTime DATETIME     NOT NULL
+  lastTime DATETIME
   COMMENT '登录时间'
 )
   COMMENT '用户表';

@@ -24,6 +24,8 @@ public interface GenericDao<T> { // Model Entity Domain 域
 
     void modify(T t);
 
+    void modify(String statement, Object parameter);
+
     void remove(int id);
 
 }

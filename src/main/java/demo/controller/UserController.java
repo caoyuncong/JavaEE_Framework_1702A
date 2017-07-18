@@ -35,6 +35,7 @@ public class UserController extends BaseController {
             String encryptedPassword = user.getPassword();
             StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
             if (encryptor.checkPassword(plainPassword, encryptedPassword)) {
+                userDao.modify("updateLastTime", user.getId()); // update last login time
                 session.setAttribute("user", user);
                 return "redirect:/book/queryAll";
             }
