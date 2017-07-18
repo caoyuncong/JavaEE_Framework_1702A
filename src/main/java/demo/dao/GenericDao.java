@@ -2,6 +2,7 @@ package demo.dao;
 
 import demo.model.User;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ import java.util.List;
  * https://github.com/thu/JavaEE_Framework_1702A/
  * ###通用的###数据库操作
  */
-public interface GenericDao<T> { // Model Entity Domain 域
+public interface GenericDao<T extends Serializable> { // Model Entity Domain 域
 
     void create(T t);
 

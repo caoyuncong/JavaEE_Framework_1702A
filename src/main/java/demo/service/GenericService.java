@@ -1,5 +1,6 @@
 package demo.service;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,15 +8,13 @@ import java.util.List;
  * 7/18/17 10:31
  * https://github.com/thu/JavaEE_Framework_1702A/
  */
-public interface GenericService<T> {
+public interface GenericService<T extends Serializable> {
 
     void create(T t);
 
     T query(String statement, Object parameter);
 
     List<T> queryAll();
-
-//    List<T> queryList(String statement, Object parameter);
 
     T queryById(int id);
 

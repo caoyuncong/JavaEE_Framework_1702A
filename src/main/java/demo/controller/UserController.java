@@ -1,6 +1,5 @@
 package demo.controller;
 
-import demo.dao.UserDao;
 import demo.model.User;
 import demo.service.UserService;
 import org.jasypt.util.password.StrongPasswordEncryptor;
@@ -17,9 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("user")
 public class UserController extends BaseController {
 
-    @Autowired // 自动装配
-    private UserDao userDao;
-
     @Autowired
     private UserService userService;
 
@@ -27,19 +23,19 @@ public class UserController extends BaseController {
     private String create(User user) {
         StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
         user.setPassword(encryptor.encryptPassword(user.getPassword()));
-        userDao.create(user);
+        userService.create(user);
         return "redirect:/default.jsp";
     }
 
     @RequestMapping("signIn")
     private String signIn(User user) {
         String plainPassword = user.getPassword();
-        user = userDao.query("queryPasswordByUsername", user.getUsername());
+        user = userService.query("queryPasswordByUsername", user.getUsername());
         if (user != null) {
             String encryptedPassword = user.getPassword();
             StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
             if (encryptor.checkPassword(plainPassword, encryptedPassword)) {
-                userDao.modify("updateLastTime", user.getId()); // update last login time
+                userService.modify("updateLastTime", user.getId()); // update last login time
                 session.setAttribute("user", user);
                 return "redirect:/book/queryAll";
             }
