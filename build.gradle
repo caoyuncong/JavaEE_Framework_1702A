@@ -20,4 +20,5 @@ dependencies {
     compile 'commons-dbcp:commons-dbcp:1.4'
     compile 'jstl:jstl:1.2'
     compile 'org.jasypt:jasypt:1.9.2'
+    compile 'org.projectlombok:lombok:1.16.18'
 }

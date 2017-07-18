@@ -9,7 +9,9 @@ CREATE TABLE db_test.user (
   username VARCHAR(191) NOT NULL UNIQUE
   COMMENT '用户名',
   password VARCHAR(255) NOT NULL
-  COMMENT '密码'
+  COMMENT '密码',
+  lastTime DATETIME     NOT NULL
+  COMMENT '登录时间'
 )
   COMMENT '用户表';
 
@@ -38,8 +40,10 @@ SELECT *
 FROM db_test.book;
 
 SELECT *
-FROM db_test.user WHERE username = '' AND password = '';
+FROM db_test.user
+WHERE username = '' AND password = '';
 
 SELECT password
-FROM db_test.user WHERE username = '';
+FROM db_test.user
+WHERE username = '';
 

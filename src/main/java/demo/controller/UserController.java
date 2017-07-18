@@ -31,11 +31,13 @@ public class UserController extends BaseController {
     private String signIn(User user) {
         String plainPassword = user.getPassword();
         user = userDao.query("queryPasswordByUsername", user.getUsername());
-        String encryptedPassword = user.getPassword();
-        StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
-        if (encryptor.checkPassword(plainPassword, encryptedPassword)) {
-            session.setAttribute("user", user);
-            return "redirect:/book/queryAll";
+        if (user != null) {
+            String encryptedPassword = user.getPassword();
+            StrongPasswordEncryptor encryptor = new StrongPasswordEncryptor();
+            if (encryptor.checkPassword(plainPassword, encryptedPassword)) {
+                session.setAttribute("user", user);
+                return "redirect:/book/queryAll";
+            }
         }
         request.setAttribute("message", "用户名或密码错误");
         return "/default.jsp";
