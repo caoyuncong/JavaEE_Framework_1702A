@@ -1,18 +1,17 @@
 package demo.util;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.Writer;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
+import freemarker.template.Template;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfig;
-
-import freemarker.template.Template;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.Writer;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 class ComponentGenerator {
 
@@ -76,7 +75,7 @@ class ComponentGenerator {
         map.put("model", model);
         map.put("PK", pk);
         map.put("db", DATABASE);
-        map.put("table", convertJavaNameToDatabaseName(model));
+        map.put("table", classNameToTableName(model));
         map.put("columns", columnMap);
 
         File file = null;
@@ -103,7 +102,7 @@ class ComponentGenerator {
                 if (!path.exists()) {
                     System.out.println("make conf directories..." + path.mkdir());
                 }
-                file = new File(path + "/" + convertJavaNameToDatabaseName(model) + "-mapper" + ".xml");
+                file = new File(path + "/" + classNameToTableName(model) + "-mapper" + ".xml");
                 name = "conf/" + tpl + ".ftl";
                 break;
             }
@@ -125,7 +124,7 @@ class ComponentGenerator {
         System.out.println("\t" + file + " \t generated!");
     }
 
-    private static String convertJavaNameToDatabaseName(String ClassName) {
+    private static String classNameToTableName(String ClassName) {
         StringBuilder stringBuilder = new StringBuilder(ClassName);
         for (int i = 1; i < stringBuilder.length(); i++) {
             if (Character.isUpperCase(stringBuilder.charAt(i))) {
