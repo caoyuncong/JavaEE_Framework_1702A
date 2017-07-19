@@ -130,7 +130,7 @@ class ComponentGenerator {
      * Student - student
      * StudentCourse - student_ourse
      *
-     * 正则 (?<!^) 非起始
+     * 正则 (?!^) 非起始
      *     ([A-Z]) 大写字母
      *     _$1 下划线加原大写字母
      *
@@ -138,6 +138,6 @@ class ComponentGenerator {
      * @return 表的名字
      */
     private static String classNameToTableName(String className) {
-        return className.replaceAll("(?<!^)([A-Z])", "_$1").toLowerCase();
+        return className.replaceAll("(?!^)([A-Z])", "_$1").toLowerCase();
     }
 }
