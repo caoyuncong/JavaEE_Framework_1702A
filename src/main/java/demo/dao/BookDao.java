@@ -2,8 +2,6 @@ package demo.dao;
 
 import demo.model.Book;
 
-import java.util.List;
-
 /**
  * Created by mingfei.net@gmail.com
  * 7/14/17 10:46
@@ -11,3 +9,14 @@ import java.util.List;
  */
 public interface BookDao extends GenericDao<Book> {
 }
+
+
+/*
+DAO 接口的模板 template 模板\ ['templeɪt\;\ -plɪt]
+
+package demo.dao;
+
+import demo.model.{model};
+
+public interface {model}Dao extends GenericDao<{model}> {}
+ */

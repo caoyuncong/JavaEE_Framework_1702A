@@ -37,4 +37,8 @@
     </bean>
 
     <bean id="encryptor" class="org.jasypt.util.password.StrongPasswordEncryptor"/>
+    
+    <bean id="freemarker" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="classpath:template"/>
+    </bean>
 </beans>
