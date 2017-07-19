@@ -126,15 +126,13 @@ class ComponentGenerator {
     }
 
     private static String convertJavaNameToDatabaseName(String ClassName) {
-        Pattern pattern = Pattern.compile("[A-z][a-z]*");
-        Matcher matcher = pattern.matcher(ClassName);
-        StringBuilder stringBuilder = new StringBuilder();
-        while (matcher.find()) {
-            stringBuilder.append(matcher.group().toLowerCase());
-            if (!matcher.hitEnd()) {
-                stringBuilder.append("_");
+        StringBuilder stringBuilder = new StringBuilder(ClassName);
+        for (int i = 1; i < stringBuilder.length(); i++) {
+            if (Character.isUpperCase(stringBuilder.charAt(i))) {
+                stringBuilder.insert(i, '_');
+                i++;
             }
         }
-        return stringBuilder.toString();
+        return stringBuilder.toString().toLowerCase();
     }
 }
