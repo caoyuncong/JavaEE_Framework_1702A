@@ -31,7 +31,7 @@ CREATE TABLE db_test.book (
 )
   COMMENT '图书表';
 
-# user table
+# student table
 DROP TABLE IF EXISTS db_test.student;
 CREATE TABLE db_test.student (
   id      INT AUTO_INCREMENT PRIMARY KEY
@@ -43,6 +43,16 @@ CREATE TABLE db_test.student (
   married VARCHAR(255) COMMENT '婚否'
 )
   COMMENT '学生表';
+
+# demo table
+DROP TABLE IF EXISTS db_test.demo;
+CREATE TABLE db_test.demo (
+  id      INT AUTO_INCREMENT PRIMARY KEY
+  COMMENT 'PK',
+  name    VARCHAR(191) NOT NULL UNIQUE
+  COMMENT '姓名'
+)
+  COMMENT '测试表';
 
 TRUNCATE TABLE db_test.user;
 
@@ -62,4 +72,7 @@ WHERE username = '';
 
 SELECT *
 FROM db_test.student;
+
+SELECT *
+FROM db_test.demo;
 

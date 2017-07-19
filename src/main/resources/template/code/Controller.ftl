@@ -38,7 +38,7 @@ public class ${model}Controller extends BaseController {
 
     @RequestMapping("list/{page}")
     private String list(@PathVariable int page) {
-        session.setAttribute("pagination", ${model?lower_case}Service.list(page));
+        session.setAttribute("list", ${model?lower_case}Service.list(page));
         return "redirect:/${model?lower_case}/list.jsp";
     }
 
