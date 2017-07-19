@@ -17,18 +17,19 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 class ComponentGenerator {
 
     // Configuration
-    private final static String PACKAGE = "demo";
-    private final static String DATABASE = "db_test";
+    private static final String PACKAGE = "demo";
+    private static final String DATABASE = "db_test";
 
-    private final static String CODE_PATH = "src/main/java/";
+    private static final String CODE_PATH = "src/main/java/";
     private static final String PAGE_PATH = "src/main/webapp/";
     private static final String CONF_PATH = "src/main/resources/";
-    private final static String PATH = CODE_PATH + PACKAGE.replace(".", "/");
-    private final static String[] CODE_TPLS = {"Model", "Dao", "Dao.Impl", "Service", "Service.Impl", "Controller"};
-    private final static String[] PAGE_TPLS = {"index", "add", "list", "edit"};
-    private final static String[] CONF_TPLS = {"mapper"};
-    private static String model;
+    private static final String PATH = CODE_PATH + PACKAGE.replace(".", "/");
+    private static final String[] CODE_TPLS = {"Model", "Dao", "Dao.Impl", "Service", "Service.Impl", "Controller"};
+    private static final String[] PAGE_TPLS = {"index", "add", "list", "edit"};
+    private static final String[] CONF_TPLS = {"mapper"};
+
     private static String pk;
+    private static String model;
     private static String properties;
     private static Scanner scanner = new Scanner(System.in);
     private static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
@@ -106,6 +107,8 @@ class ComponentGenerator {
                 name = "conf/" + tpl + ".ftl";
                 break;
             }
+            default:
+                break;
         }
         Writer writer = null;
         if (file != null) {
