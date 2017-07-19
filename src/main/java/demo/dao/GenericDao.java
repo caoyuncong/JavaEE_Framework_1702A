@@ -11,7 +11,7 @@ import java.util.List;
  * https://github.com/thu/JavaEE_Framework_1702A/
  * ###通用的###数据库操作
  */
-public interface GenericDao<T extends Serializable> { // Model Entity Domain 域
+public interface GenericDao<T extends Serializable, ID extends Number> { // Model Entity Domain 域
 
     void create(T t);
 
@@ -19,14 +19,16 @@ public interface GenericDao<T extends Serializable> { // Model Entity Domain 域
 
     List<T> queryAll();
 
+    List<T> list(int page);
+
 //    List<T> queryList(String statement, Object parameter);
 
-    T queryById(int id);
+    T queryById(ID id);
 
     void modify(T t);
 
     void modify(String statement, Object parameter);
 
-    void remove(int id);
+    void remove(ID id);
 
 }

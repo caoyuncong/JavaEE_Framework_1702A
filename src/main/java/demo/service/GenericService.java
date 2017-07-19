@@ -8,7 +8,7 @@ import java.util.List;
  * 7/18/17 10:31
  * https://github.com/thu/JavaEE_Framework_1702A/
  */
-public interface GenericService<T extends Serializable> {
+public interface GenericService<T extends Serializable, ID extends Number> {
 
     void create(T t);
 
@@ -16,12 +16,14 @@ public interface GenericService<T extends Serializable> {
 
     List<T> queryAll();
 
-    T queryById(int id);
+    List<T> list(int page);
+
+    T queryById(ID id);
 
     void modify(T t);
 
     void modify(String statement, Object parameter);
 
-    void remove(int id);
+    void remove(ID id);
 
 }

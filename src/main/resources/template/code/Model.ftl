@@ -1,4 +1,4 @@
-package demo.model;
+package <#if package!="">${package}.</#if>model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,11 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class Student extends BaseModel {
+public class ${model} extends BaseModel {
 
-    private Integer id;
-    private String name;
-    private int age;
-    private double height;
-    private boolean married;
+    private ${PK} id;
+    <#list properties?keys as key>
+    private ${properties[key]} ${key};
+    </#list>
 }

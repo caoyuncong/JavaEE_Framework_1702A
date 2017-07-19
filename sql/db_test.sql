@@ -31,6 +31,19 @@ CREATE TABLE db_test.book (
 )
   COMMENT '图书表';
 
+# user table
+DROP TABLE IF EXISTS db_test.student;
+CREATE TABLE db_test.student (
+  id      INT AUTO_INCREMENT PRIMARY KEY
+  COMMENT 'PK',
+  name    VARCHAR(191) NOT NULL UNIQUE
+  COMMENT '姓名',
+  age     INT COMMENT '年龄',
+  height  DOUBLE COMMENT '身高',
+  married VARCHAR(255) COMMENT '婚否'
+)
+  COMMENT '学生表';
+
 TRUNCATE TABLE db_test.user;
 
 SELECT *
@@ -46,4 +59,7 @@ WHERE username = '' AND password = '';
 SELECT password
 FROM db_test.user
 WHERE username = '';
+
+SELECT *
+FROM db_test.student;
 

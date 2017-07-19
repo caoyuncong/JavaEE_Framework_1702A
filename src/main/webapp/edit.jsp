@@ -4,7 +4,7 @@
     https://github.com/thu/JavaEE_Framework_1702A/
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="inc.jsp" %>
+<%@ include file="commons/inc.jsp" %>
 <html>
 <head>
     <title>edit page</title>

@@ -7,7 +7,7 @@ import demo.model.User;
  * 7/18/17 10:33
  * https://github.com/thu/JavaEE_Framework_1702A/
  */
-public interface UserService extends GenericService<User> {
+public interface UserService extends GenericService<User, Integer> {
 
     User signIn(User user);
 
