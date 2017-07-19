@@ -124,14 +124,7 @@ class ComponentGenerator {
         System.out.println("\t" + file + " \t generated!");
     }
 
-    private static String classNameToTableName(String ClassName) {
-        StringBuilder stringBuilder = new StringBuilder(ClassName);
-        for (int i = 1; i < stringBuilder.length(); i++) {
-            if (Character.isUpperCase(stringBuilder.charAt(i))) {
-                stringBuilder.insert(i, '_');
-                i++;
-            }
-        }
-        return stringBuilder.toString().toLowerCase();
+    private static String classNameToTableName(String className) {
+        return className.replaceAll("(?<!^)([A-Z])", "_$1").toLowerCase();
     }
 }
