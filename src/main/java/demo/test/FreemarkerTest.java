@@ -10,6 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -24,17 +25,28 @@ public class FreemarkerTest {
 
         String model = "Student";
 
-        Template template = freeMarkerConfig.getConfiguration().getTemplate("dao.ftl");
-        Map<String, String> map = new HashMap<>();
+        Template template = freeMarkerConfig.getConfiguration().getTemplate("model.ftl");
+        Map<String, Object> map = new HashMap<>();
         map.put("model", model);
-        Writer writer = new FileWriter("src/main/java/demo/dao/" + model + "Dao.java");
+
+        Map<String, String> fields = new LinkedHashMap<>();
+        fields.put("id", "Integer");
+        fields.put("name", "String");
+        fields.put("age", "int");
+        fields.put("height", "double");
+        fields.put("married", "boolean");
+        fields.put("address", "String");
+
+        map.put("fields", fields);
+
+        Writer writer = new FileWriter("src/main/java/demo/model/" + model + ".java");
+
         template.process(map, writer);
     }
 }
 
 /*
     Student
-    fields:
         Integer id;
         String name;
         int age;
