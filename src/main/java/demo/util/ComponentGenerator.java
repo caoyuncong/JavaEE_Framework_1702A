@@ -124,6 +124,19 @@ class ComponentGenerator {
         System.out.println("\t" + file + " \t generated!");
     }
 
+    /**
+     *
+     * 把类的名字转换为表的名字
+     * Student - student
+     * StudentCourse - student_ourse
+     *
+     * 正则 (?<!^) 非起始
+     *     ([A-Z]) 大写字母
+     *     _$1 下划线加原大写字母
+     *
+     * @param className 类的名字
+     * @return 表的名字
+     */
     private static String classNameToTableName(String className) {
         return className.replaceAll("(?<!^)([A-Z])", "_$1").toLowerCase();
     }
