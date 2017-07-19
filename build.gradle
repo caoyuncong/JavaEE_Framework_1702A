@@ -23,4 +23,5 @@ dependencies {
     compile 'org.jasypt:jasypt:1.9.2'
     compile 'org.projectlombok:lombok:1.16.18'
     compile 'org.freemarker:freemarker:2.3.26-incubating'
+    compile 'org.apache.velocity:velocity:1.7'
 }
