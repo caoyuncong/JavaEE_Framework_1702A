@@ -22,10 +22,22 @@ public class FreemarkerTest {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         FreeMarkerConfig freeMarkerConfig = (FreeMarkerConfig) applicationContext.getBean("freemarker");
 
-        Template template = freeMarkerConfig.getConfiguration().getTemplate("test.ftl");
+        String model = "Student";
+
+        Template template = freeMarkerConfig.getConfiguration().getTemplate("dao.ftl");
         Map<String, String> map = new HashMap<>();
-        map.put("name", "Freemarker");
-        Writer writer = new FileWriter("test.html");
+        map.put("model", model);
+        Writer writer = new FileWriter("src/main/java/demo/dao/" + model + "Dao.java");
         template.process(map, writer);
     }
 }
+
+/*
+    Student
+    fields:
+        Integer id;
+        String name;
+        int age;
+        double height;
+        boolean married;
+ */
