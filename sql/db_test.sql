@@ -80,8 +80,7 @@ INSERT INTO db_test.book VALUES (NULL, 'title...', 'author...', '2017-1-1', '123
 
 
 SELECT *
-FROM db_test.book
-LIMIT 20 OFFSET 0;
+FROM db_test.book;
 
 # 每页显示 10 条记录
 # 记录总数

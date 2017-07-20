@@ -1,6 +1,9 @@
 package demo.dao.impl;
 
 import demo.dao.GenericDao;
+import demo.util.Constant;
+import demo.util.Pagination;
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -65,5 +68,23 @@ public class GenericDaoImpl<T extends Serializable, ID extends Number> implement
     @Override
     public void remove(ID id) {
         sqlSession.delete(namespace.concat(".remove"), id);
+    }
+
+    // Pagination
+    private Pagination<T> getPagination(int currentPage, String statement, Object parameter) {
+        int totalRows = getTotalRows(statement, parameter);
+        int totalPages = (int) Math.ceil(totalRows / (double) Constant.PAGE_SIZE);
+        List<T> list = sqlSession.selectList(namespace.concat(statement), parameter, getRowBounds(currentPage));
+        return new Pagination<T>(list, statement, Constant.PAGE_SIZE, totalRows, totalPages, currentPage);
+    }
+
+    private RowBounds getRowBounds(int currentPage) {
+        int offset = Constant.PAGE_SIZE * (currentPage - 1);
+        return new RowBounds(offset, Constant.PAGE_SIZE);
+    }
+
+    private int getTotalRows(String statement, Object parameter) {
+        List<T> list = sqlSession.selectList(namespace.concat(statement), parameter);
+        return list.size();
     }
 }

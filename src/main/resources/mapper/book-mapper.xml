@@ -10,6 +10,10 @@
         SELECT *
         FROM db_test.book;
     </select>
+    <select id="list" resultType="book">
+        SELECT *
+        FROM db_test.book;
+    </select>
     <select id="queryById" parameterType="int" resultType="book">
         SELECT *
         FROM db_test.book
@@ -27,4 +31,9 @@
         DELETE FROM db_test.book
         WHERE id = #{id}
     </delete>
+    <select id="queryTest" parameterType="String" resultType="book">
+        select *
+        from db_test.book
+        WHERE title = #{title};
+    </select>
 </mapper>
