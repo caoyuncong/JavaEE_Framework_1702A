@@ -31,7 +31,7 @@ class ComponentGenerator {
     private static String model;
     private static String properties;
     private static Scanner scanner = new Scanner(System.in);
-    private static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+    private static ApplicationContext applicationContext = new ClassPathXmlApplicationContext("freemarker.xml");
 
     public static void main(String[] args) throws Exception {
         input();
