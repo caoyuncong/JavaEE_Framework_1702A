@@ -128,7 +128,7 @@ class ComponentGenerator {
      *
      * 把类的名字转换为表的名字
      * Student - student
-     * StudentCourse - student_ourse
+     * StudentCourse - student_course
      *
      * 正则 (?!^) 非起始
      *     ([A-Z]) 大写字母
