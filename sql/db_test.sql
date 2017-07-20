@@ -47,9 +47,9 @@ CREATE TABLE db_test.student (
 # demo table
 DROP TABLE IF EXISTS db_test.demo;
 CREATE TABLE db_test.demo (
-  id      INT AUTO_INCREMENT PRIMARY KEY
+  id   INT AUTO_INCREMENT PRIMARY KEY
   COMMENT 'PK',
-  name    VARCHAR(191) NOT NULL UNIQUE
+  name VARCHAR(191) NOT NULL UNIQUE
   COMMENT '姓名'
 )
   COMMENT '测试表';
@@ -75,4 +75,20 @@ FROM db_test.student;
 
 SELECT *
 FROM db_test.demo;
+
+INSERT INTO db_test.book VALUES (NULL, 'title...', 'author...', '2017-1-1', '123.45');
+
+
+SELECT *
+FROM db_test.book
+LIMIT 20 OFFSET 0;
+
+# 每页显示 10 条记录
+# 记录总数
+# 当前页数
+
+
+SELECT count(*)
+FROM db_test.book;
+
 
