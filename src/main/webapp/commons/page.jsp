@@ -2,7 +2,7 @@
 <%@ include file="inc.jsp" %>
 <style>
     .active {
-        background: #ff0000;
+        color: #f00;
     }
 </style>
 <script src="${ctx}/assets/js/jquery.min.js"></script>
@@ -13,78 +13,84 @@
             form.attr('action', form.attr('action') + $('#page').val());
             form.submit();
         });
-        $('a').click(function () {
-            $(this).addClass('active');
+        $('a.p').each(function () {
+            if ($(this).text() == ${sessionScope.pagination.currentPage}) {
+                $(this).addClass('active');
+            } else {
+                $(this).removeClass('active');
+            }
         });
     });
 </script>
+<c:set var="p" value="${sessionScope.pagination}"/>
 <c:choose>
-    <c:when test="${sessionScope.pagination.totalRows eq 0}">
+    <c:when test="${p.totalRows eq 0}">
         <em>没有记录</em>
     </c:when>
     <c:otherwise>
-        <p>共 ${sessionScope.pagination.totalRows} 条记录，
-            共 ${sessionScope.pagination.totalPages} 页，
-            当前第 ${sessionScope.pagination.currentPage} 页</p>
         <c:choose>
-            <c:when test="${sessionScope.pagination.currentPage eq 1}">
+            <c:when test="${p.currentPage eq 1}">
                 首页
                 上一页
             </c:when>
             <c:otherwise>
                 <a href="${ctx}/${param.path}/1">首页</a>
-                <a href="${ctx}/${param.path}/${sessionScope.pagination.currentPage - 1}">上一页</a>
+                <a href="${ctx}/${param.path}/${p.currentPage - 1}">上一页</a>
             </c:otherwise>
         </c:choose>
 
-        <c:if test="${sessionScope.pagination.currentPage < 7}">
-            <c:if test="${sessionScope.pagination.totalPages <= 7}">
-                <c:forEach var="page" begin="1" end="${sessionScope.pagination.totalPages}">
-                    <a href="${ctx}/${param.path}/${page}">${page}</a>
+        <c:if test="${p.currentPage < 7}">
+            <c:if test="${p.totalPages <= 7}">
+                <c:forEach var="page" begin="1" end="${p.totalPages}">
+                    <a class="p" href="${ctx}/${param.path}/${page}">${page}</a>
                 </c:forEach>
             </c:if>
-            <c:if test="${sessionScope.pagination.totalPages > 7}">
+            <c:if test="${p.totalPages > 7}">
                 <c:forEach var="page" begin="1" end="7">
-                    <a href="${ctx}/${param.path}/${page}">${page}</a>
+                    <a class="p" href="${ctx}/${param.path}/${page}">${page}</a>
                 </c:forEach>
                 ...
             </c:if>
         </c:if>
-
-        <c:if test="${sessionScope.pagination.currentPage >= 7}">
-            <a href="${ctx}/${param.path}/1">1</a>
-            <a href="${ctx}/${param.path}/2">2</a>
+        <c:if test="${p.currentPage >= 7}">
+            <a class="p" href="${ctx}/${param.path}/1">1</a>
+            <a class="p" href="${ctx}/${param.path}/2">2</a>
             ...
-            <a href="${ctx}/${param.path}/${sessionScope.pagination.currentPage-2}">${sessionScope.pagination.currentPage-2}</a>
-            <a href="${ctx}/${param.path}/${sessionScope.pagination.currentPage-1}">${sessionScope.pagination.currentPage-1}</a>
-            <a href="${ctx}/${param.path}/${sessionScope.pagination.currentPage}">${sessionScope.pagination.currentPage}</a>
-            <c:if test="${sessionScope.pagination.totalPages - sessionScope.pagination.currentPage > 2}">
-                <a href="${ctx}/${param.path}/${sessionScope.pagination.currentPage+1}">${sessionScope.pagination.currentPage+1}</a>
-                <a href="${ctx}/${param.path}/${sessionScope.pagination.currentPage+2}">${sessionScope.pagination.currentPage+2}</a>
+            <a class="p"
+               href="${ctx}/${param.path}/${p.currentPage-2}">${p.currentPage-2}</a>
+            <a class="p"
+               href="${ctx}/${param.path}/${p.currentPage-1}">${p.currentPage-1}</a>
+            <a class="p"
+               href="${ctx}/${param.path}/${p.currentPage}">${p.currentPage}</a>
+            <c:if test="${p.totalPages - p.currentPage > 2}">
+                <a class="p"
+                   href="${ctx}/${param.path}/${p.currentPage+1}">${p.currentPage+1}</a>
+                <a class="p"
+                   href="${ctx}/${param.path}/${p.currentPage+2}">${p.currentPage+2}</a>
                 ...
             </c:if>
-            <c:if test="${sessionScope.pagination.totalPages - sessionScope.pagination.currentPage <= 2}">
-                <c:forEach var="page" begin="${sessionScope.pagination.currentPage+1}"
-                           end="${sessionScope.pagination.totalPages}">
-                    <a href="${ctx}/${param.path}/${page}">${page}</a>
+            <c:if test="${p.totalPages - p.currentPage <= 2}">
+                <c:forEach var="page" begin="${p.currentPage+1}"
+                           end="${p.totalPages}">
+                    <a class="p" href="${ctx}/${param.path}/${page}">${page}</a>
                 </c:forEach>
             </c:if>
         </c:if>
-
         <c:choose>
-            <c:when test="${sessionScope.pagination.currentPage eq sessionScope.pagination.totalPages}">
+            <c:when test="${p.currentPage eq p.totalPages}">
                 下一页
                 尾页
             </c:when>
             <c:otherwise>
-                <a href="${ctx}/${param.path}/${sessionScope.pagination.currentPage + 1}">下一页</a>
-                <a href="${ctx}/${param.path}/${sessionScope.pagination.totalPages}">尾页</a>
+                <a href="${ctx}/${param.path}/${p.currentPage + 1}">下一页</a>
+                <a href="${ctx}/${param.path}/${p.totalPages}">尾页</a>
             </c:otherwise>
         </c:choose>
+        共 ${p.totalPages} 页
         <form id="form" action="${ctx}/${param.path}/" method="post" style="display: inline-block">
             到第
             <select id="page">
-                <c:forEach var="i" begin="1" end="${sessionScope.pagination.totalPages}">
+                <c:forEach var="i" begin="1" end="${p.totalPages}">
                 <option value="${i}">${i}
                     </c:forEach>
             </select>
