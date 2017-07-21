@@ -8,6 +8,7 @@
 <html>
 <head>
     <title>default page</title>
+    <link href="css/style.css">
 </head>
 <body>
 <h1>首页</h1>

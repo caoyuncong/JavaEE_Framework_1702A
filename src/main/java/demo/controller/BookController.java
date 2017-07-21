@@ -32,10 +32,15 @@ public class BookController extends BaseController {
         return "redirect:/book/queryAll";
     }
 
+    @RequestMapping("queryAll/{currentPage}")
+    private String queryAll(@PathVariable int currentPage) {
+        session.setAttribute("pagination", bookService.queryAll(currentPage));
+        return "redirect:/index.jsp";
+    }
+
     @RequestMapping("queryAll")
     private String queryAll() {
-        session.setAttribute("books", bookService.queryAll());
-        return "redirect:/index.jsp";
+        return "redirect:/book/queryAll/1";
     }
 
     @RequestMapping("queryById/{id}")

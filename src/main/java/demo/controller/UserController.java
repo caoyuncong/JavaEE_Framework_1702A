@@ -37,7 +37,7 @@ public class UserController extends BaseController {
         user = userService.signIn(user);
         if (user != null) {
             session.setAttribute("user", user);
-            return "redirect:/book/queryAll";
+            return "redirect:/book/queryAll/1";
         }
         request.setAttribute("message", "用户名或密码错误");
         return "/default.jsp";
