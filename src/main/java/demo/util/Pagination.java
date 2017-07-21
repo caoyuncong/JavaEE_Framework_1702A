@@ -22,6 +22,6 @@ public class Pagination<T extends Serializable> implements Serializable {
     private String statement;
     private int pageSize = Constant.PAGE_SIZE;
     private int totalRows;
-    private int totalPages;
+    private int totalPages; // ?
     private int currentPage;
 }

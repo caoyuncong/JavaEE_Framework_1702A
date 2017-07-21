@@ -1,9 +1,8 @@
 package demo.dao;
 
-import demo.model.User;
+import demo.util.Pagination;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * Created by mingfei.net@gmail.com
@@ -17,11 +16,9 @@ public interface GenericDao<T extends Serializable, ID extends Number> { // Mode
 
     T query(String statement, Object parameter);
 
-    List<T> queryAll();
+    Pagination<T> queryAll(int currentPage);
 
-    List<T> list(int page);
-
-//    List<T> queryList(String statement, Object parameter);
+    Pagination<T> query(String statement, Object parameter, int currentPage);
 
     T queryById(ID id);
 
