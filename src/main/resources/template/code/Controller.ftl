@@ -21,30 +21,30 @@ public class ${model}Controller extends BaseController {
     @RequestMapping("create")
     private String create(${model} ${model?lower_case}) {
         ${model?lower_case}Service.create(${model?lower_case});
-        return "redirect:/${model?lower_case}/list";
+        return "redirect:/${model?lower_case}/queryAll";
     }
 
     @RequestMapping("remove/{id}")
     private String remove(@PathVariable("id") ${PK} id) {
         ${model?lower_case}Service.remove(id);
-        return "redirect:/${model?lower_case}/list";
+        return "redirect:/${model?lower_case}/queryAll";
     }
 
     @RequestMapping("modify")
     private String modify(${model} ${model?lower_case}) {
         ${model?lower_case}Service.modify(${model?lower_case});
-        return "redirect:/${model?lower_case}/list";
+        return "redirect:/${model?lower_case}/queryAll";
     }
 
-    @RequestMapping("list/{page}")
-    private String list(@PathVariable int page) {
-        session.setAttribute("list", ${model?lower_case}Service.list(page));
+    @RequestMapping("queryAll/{page}")
+    private String queryAll(@PathVariable int page) {
+        session.setAttribute("pagination", ${model?lower_case}Service.queryAll(page));
         return "redirect:/${model?lower_case}/list.jsp";
     }
 
-    @RequestMapping("list")
-    private String list() {
-        return list(1);
+    @RequestMapping("queryAll")
+    private String queryAll() {
+        return queryAll(1);
     }
 
     @RequestMapping("queryById/{id}")

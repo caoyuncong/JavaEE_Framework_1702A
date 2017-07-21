@@ -40,7 +40,7 @@ public class BookController extends BaseController {
 
     @RequestMapping("queryAll")
     private String queryAll() {
-        return "redirect:/book/queryAll/1";
+        return queryAll(1);
     }
 
     @RequestMapping("queryById/{id}")

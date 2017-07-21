@@ -7,6 +7,6 @@
     <body>
         <h1>${model} INDEX</h1>
         <p><a href="${'$'}{ctx}/${model?lower_case}/add.jsp">ADD</a></p>
-        <p><a href="${'$'}{ctx}/${model?lower_case}/list">LIST</a></p>
+        <p><a href="${'$'}{ctx}/${model?lower_case}/queryAll">LIST</a></p>
     </body>
 </html>

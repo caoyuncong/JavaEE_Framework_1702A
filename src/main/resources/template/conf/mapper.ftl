@@ -28,7 +28,7 @@
         </#list>
         WHERE ${table}.id = ${'#'}{id}
     </update>
-    <select id="list" resultType="${model?lower_case}">
+    <select id="queryAll" resultType="${model?lower_case}">
         SELECT *
         FROM ${db}.${table}
         ORDER BY id

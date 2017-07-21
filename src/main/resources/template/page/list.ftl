@@ -21,7 +21,7 @@
                 </#list>
                 <th colspan="2">OPERATION</th>
             </tr>
-            <c:forEach var="${model?lower_case}" items="${'$'}{sessionScope.list}" varStatus="vs">
+            <c:forEach var="${model?lower_case}" items="${'$'}{sessionScope.pagination.list}" varStatus="vs">
             <tr>
                 <td>${'$'}{vs.count}</td>
                 <#assign keys = properties?keys>
@@ -33,5 +33,8 @@
             </tr>
             </c:forEach>
         </table>
+        <c:import url="${'$'}{ctx}/commons/page.jsp">
+            <c:param name="path" value="${model?lower_case}/${'$'}{sessionScope.pagination.statement}"/>
+        </c:import>
     </body>
 </html>
