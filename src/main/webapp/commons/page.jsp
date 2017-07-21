@@ -1,6 +1,6 @@
 <%@ page pageEncoding="UTF-8" %>
 <%@ include file="inc.jsp" %>
-<script src="${ctx}/static/js/jquery.min.js"></script>
+<script src="${ctx}/assets/js/jquery.min.js"></script>
 <script>
     $(function () {
         var form = $('#form');
@@ -12,7 +12,7 @@
 </script>
 <c:choose>
     <c:when test="${sessionScope.pagination.totalRows eq 0}">
-        <em>NO RECORDS.</em>
+        <em>没有记录</em>
     </c:when>
     <c:otherwise>
         <p>共 ${sessionScope.pagination.totalRows} 条记录，共 ${sessionScope.pagination.totalPages}
@@ -24,7 +24,7 @@
             </c:when>
             <c:otherwise>
                 <a href="${ctx}/${param.path}/1">首页</a>
-                <a href="${ctx}/${param.path}/${sessionScope.pagination.currentPage-1}">上一页</a>
+                <a href="${ctx}/${param.path}/${sessionScope.pagination.currentPage - 1}">上一页</a>
             </c:otherwise>
         </c:choose>
         <c:choose>
@@ -33,16 +33,16 @@
                 尾页
             </c:when>
             <c:otherwise>
-                <a href="${ctx}/${param.path}/${sessionScope.pagination.currentPage+1}">下一页</a>
+                <a href="${ctx}/${param.path}/${sessionScope.pagination.currentPage + 1}">下一页</a>
                 <a href="${ctx}/${param.path}/${sessionScope.pagination.totalPages}">尾页</a>
             </c:otherwise>
         </c:choose>
-        <form id="form" action="${ctx}/${param.path}/" method="post">
+        <form id="form" action="${ctx}/${param.path}/" method="post" style="display: inline-block">
             跳到第
             <select id="page">
                 <c:forEach var="i" begin="1" end="${sessionScope.pagination.totalPages}">
-                <option value="${i}">${i}
-                    </c:forEach>
+                    <option value="${i}">${i}
+                </c:forEach>
             </select>
             页
             <a id="submit" href="#">GO</a>
