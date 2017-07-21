@@ -38,7 +38,6 @@
                 <a href="${ctx}/${param.path}/${p.currentPage - 1}">上一页</a>
             </c:otherwise>
         </c:choose>
-
         <c:if test="${p.currentPage < 7}">
             <c:if test="${p.totalPages <= 7}">
                 <c:forEach var="page" begin="1" end="${p.totalPages}">
