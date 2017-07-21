@@ -6,5 +6,5 @@ package demo.util;
  * https://github.com/thu/JavaEE_Framework_1702A/
  */
 public interface Constant {
-    int PAGE_SIZE = 5;
+    int PAGE_SIZE = 2;
 }
